@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 
 const router = express.Router();
 
-// Assuming io is passed as an argument to this file
+// io will passed as an argument to this file
 module.exports = function (io) {
   // Send Message (DM)
   router.post("/", auth, async (req, res) => {
