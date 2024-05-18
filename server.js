@@ -25,14 +25,17 @@ mongoose
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
+app.use("/uploads", express.static("uploads"));
 
 const userRouter = require("./src/controllers/userController");
 const messageRouter = require("./src/controllers/messageController")(io);
 const chatRouter = require("./src/controllers/chatController")(io);
+const eventRouter = require("./src/controllers/eventController");
 
 app.use("/api/users", userRouter);
 app.use("/api/messages", messageRouter);
 app.use("/api/chats", chatRouter);
+app.use("/api/events", eventRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
